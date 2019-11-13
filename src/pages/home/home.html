@@ -3,15 +3,31 @@
     <ion-title>
       Ionic Blank
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="clickAdd()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
+<!--ionic generate page movie-->
 <ion-content padding>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let movie of movies">
         <ion-card>
           <img src={{movie.img}}>
+          <ion-card-content>
+            <h2>{{movie.title}}</h2>
+            <ion-row>
+              <ion-icon name="star"
+                        *ngFor="let r of movie.rate">
+              </ion-icon>
+            </ion-row>
+            <h3>{{movie.director}}</h3>
+            <h3>{{movie.distributor}}</h3>
+            <p>{{movie.year}}</p>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
