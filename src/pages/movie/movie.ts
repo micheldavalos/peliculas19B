@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HttpClient} from "@angular/common/http";
 
 /**
  * Generated class for the MoviePage page.
@@ -21,7 +22,8 @@ export class MoviePage {
   image = "";
   year = 2019;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public http: HttpClient) {
   }
 
   ionViewDidLoad() {
@@ -40,5 +42,14 @@ export class MoviePage {
       year: this.year
     };
     console.log(JSON.stringify(movie));
+
+    this.http.post('/peliculas/peliculas/', movie)
+      .subscribe(data => {
+        console.log(JSON.stringify(data));
+        this.navCtrl.pop();
+      }, error => {
+        console.log(JSON.stringify(error));
+        this.navCtrl.pop();
+      });
   }
 }

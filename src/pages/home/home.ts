@@ -13,6 +13,16 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
               public http: HttpClient) {
+    // this.http.get('/peliculas/peliculas/')
+    //   .subscribe(data => {
+    //     this.movies = data;
+    //     console.log(JSON.stringify(data));
+    //   }, error => {
+    //     console.log(JSON.stringify(error));
+    //   });
+  }
+
+  ionViewWillEnter() {
     this.http.get('/peliculas/peliculas/')
       .subscribe(data => {
         this.movies = data;
